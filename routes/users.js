@@ -1,30 +1,19 @@
 import express from 'express';
-import res from 'express/lib/response';
+
+import { mostraOsCria,criaOsCria, mostraUmCria, deletaOcria, atualizaOcria } from '../controllers/users.js';
+
 
 const router = express.Router();
 
-const users = [
-    {
-      firstName: "Jhon",
-      lastName: "Doe",
-      age: 25
-    },
-    {
-        firstName: "Jane",
-        lastName: "Doe",
-        age: 24
-    }
-]
 
-//all routes in here starts with /users
-router.get('/', (req, res) => {
-    console.log(users);
+router.get('/', mostraOsCria);
 
-    res.send(users);
-});
+router.post('/', criaOsCria );
 
-router.post('/', (req, res) => {
-    
-});
+router.get('/:id',mostraUmCria);
+
+router.delete('/:id',deletaOcria);
+
+router.patch('/:id',atualizaOcria);
 
 export default router;
